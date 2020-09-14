@@ -2043,6 +2043,10 @@ char *bitcoind_passthrut(char *coinstr,char *serverport,char *userpass,char *met
         portable_mutex_unlock(&coin->curl_mutex);
         return(retstr);
     }*/
+    const char* mp = method;
+    const char* cs = coinstr;
+    printf("\n---- Method called: %s,\tCoinstr: %s ------- \n", mp, cs);
+    puts(buff);
     return(bitcoind_RPC(0,coinstr,serverport,userpass,method,params,timeout));
 }
 
