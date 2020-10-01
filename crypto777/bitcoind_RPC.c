@@ -77,7 +77,7 @@ char *post_process_bitcoind_RPC(char *debugstr,char *command,char *rpcstr,char *
 #ifndef FROM_MARKETMAKER
     //usleep(1000);
 #endif
-    //printf("<<<<<<<<<<< bitcoind_RPC: %s post_process_bitcoind_RPC.%s.[%s]\n",debugstr,command,rpcstr);
+    printf("<<<<<<<<<<< bitcoind_RPC: %s post_process_bitcoind_RPC.%s.[%s]\n",debugstr,command,rpcstr);
     if ( command == 0 || rpcstr == 0 || rpcstr[0] == 0 )
     {
         if ( strcmp(command,"signrawtransaction") != 0 && strcmp(command,"getrawtransaction") != 0 )
@@ -121,7 +121,7 @@ char *post_process_bitcoind_RPC(char *debugstr,char *command,char *rpcstr,char *
         }
     } else retstr = rpcstr;
     free_json(json);
-    //fprintf(stderr,"<<<<<<<<<<< bitcoind_RPC: postprocess returns.(%s)\n",retstr);
+    fprintf(stderr,"<<<<<<<<<<< bitcoind_RPC: postprocess returns.(%s)\n",retstr);
     return(retstr);
 }
 #endif

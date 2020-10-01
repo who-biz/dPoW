@@ -387,7 +387,7 @@ bits256 dpow_getblockhash(struct supernet_info *myinfo,struct iguana_info *coin,
     {
         sprintf(buf,"%d",height);
         retstr = bitcoind_passthru(coin->symbol,coin->chain->serverport,coin->chain->userpass,"getblockhash",buf);
-        //printf("%s ht.%d -> getblockhash.(%s)\n",coin->symbol,height,retstr);
+        printf("%s ht.%d -> getblockhash.(%s)\n",coin->symbol,height,retstr);
         usleep(1000);
     }
     else if ( coin->FULLNODE > 0 || coin->VALIDATENODE > 0 )
@@ -444,7 +444,7 @@ char *dpow_validateaddress(struct supernet_info *myinfo,struct iguana_info *coin
     {
         sprintf(buf,"\"%s\"",address);
         retstr = bitcoind_passthru(coin->symbol,coin->chain->serverport,coin->chain->userpass,coin->validateaddress,buf);
-//printf("%s %s %s %s %s\n",coin->symbol,coin->chain->serverport,coin->chain->userpass,coin->validateaddress,buf);
+printf("%s %s %s %s %s\n",coin->symbol,coin->chain->serverport,coin->chain->userpass,coin->validateaddress,buf);
         //printf("%s -> (%s)\n",buf,retstr!=0?retstr:"null");
         if ( (retjson= cJSON_Parse(retstr)) != 0 )
         {
@@ -543,7 +543,7 @@ char *dpow_decoderawtransaction(struct supernet_info *myinfo,struct iguana_info 
         jaddistr(array,rawtx);
         paramstr = jprint(array,1);
         retstr = bitcoind_passthru(coin->symbol,coin->chain->serverport,coin->chain->userpass,"decoderawtransaction",paramstr);
-        //printf("%s decoderawtransaction.(%s) <- (%s)\n",coin->symbol,retstr,paramstr);
+        printf("%s decoderawtransaction.(%s) <- (%s)\n",coin->symbol,retstr,paramstr);
         free(paramstr);
         usleep(1000);
     }
@@ -707,7 +707,7 @@ char *dpow_signrawtransaction(struct supernet_info *myinfo,struct iguana_info *c
             }
             free_json(retjson);
         }
-        //printf("%s signrawtransaction.(%s) params.(%s)\n",coin->symbol,retstr,paramstr);
+        printf("%s signrawtransaction.(%s) params.(%s)\n",coin->symbol,retstr,paramstr);
 
 	/*if (coin->sapling != 0)
 		printf("[Decker] %s dpow_signrawtransaction.(%s) params.(%s)\n", coin->symbol, retstr, paramstr);*/
