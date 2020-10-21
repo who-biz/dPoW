@@ -431,6 +431,7 @@ cJSON *dpow_getblock(struct supernet_info *myinfo,struct iguana_info *coin,bits2
     if ( retstr != 0 )
     {
         json = cJSON_Parse(retstr);
+        printf("%s getblock.(%s)\n",coin->symbol,retstr);
         free(retstr);
     }
     return(json);
@@ -991,8 +992,8 @@ int32_t dpow_getchaintip(struct supernet_info *myinfo,bits256 *merklerootp,bits2
                 {
                     for (i=0; i<n&&i<maxtx; i++)
                         txs[i] = jbits256i(array,i);
-                    if ( 0 && strcmp(coin->symbol,"USD") == 0 )
-                        printf("dpow_getchaintip %s ht.%d time.%u numtx.%d\n",coin->symbol,height,*blocktimep,n);
+                 //   if ( 0 && strcmp(coin->symbol,"USD") == 0 )
+                     printf("dpow_getchaintip %s ht.%d time.%u numtx.%d\n",coin->symbol,height,*blocktimep,n);
                     *numtxp = n;
                 }
             } else height = -1;
