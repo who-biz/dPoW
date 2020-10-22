@@ -615,7 +615,7 @@ cJSON *dpow_listunspent(struct supernet_info *myinfo,struct iguana_info *coin,ch
         if ( (retstr= bitcoind_passthru(coin->symbol,coin->chain->serverport,coin->chain->userpass,"listunspent",buf)) != 0 )
         {
             json = cJSON_Parse(retstr);
-            //printf("%s (%s) listunspent.(%s)\n",coin->symbol,buf,retstr);
+            printf("%s (%s) listunspent.(%s)\n",coin->symbol,buf,retstr);
             free(retstr);
         } else printf("%s null retstr from (%s)n",coin->symbol,buf);
     }
@@ -677,7 +677,7 @@ cJSON *dpow_listtransactions(struct supernet_info *myinfo,struct iguana_info *co
         sprintf(buf,"[\"%s\", %d, %d, true]",coinaddr,count,skip);
         if ( (retstr= bitcoind_passthru(coin->symbol,coin->chain->serverport,coin->chain->userpass,"listtransactions",buf)) != 0 )
         {
-            //printf("LIST.(%s)\n",retstr);
+            printf("LIST.(%s)\n",retstr);
             json = cJSON_Parse(retstr);
             free(retstr);
             return(json);
@@ -749,7 +749,7 @@ char *dpow_signrawtransaction(struct supernet_info *myinfo,struct iguana_info *c
             }
         }
         retstr = bitcoinrpc_signrawtransaction(myinfo,coin,0,0,rawtx,vins,privkeys,"ALL");
-        //printf("call sign.(%s) vins.(%s) privs.(%s) -> (%s)\n",rawtx,jprint(vins,0),jprint(privkeys,0),retstr);
+        printf("call sign.(%s) vins.(%s) privs.(%s) -> (%s)\n",rawtx,jprint(vins,0),jprint(privkeys,0),retstr);
         free_json(privkeys);
         return(retstr);
     }
