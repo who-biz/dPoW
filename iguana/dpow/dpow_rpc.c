@@ -1047,8 +1047,10 @@ int32_t dpow_haveutxo(struct supernet_info *myinfo,struct iguana_info *coin,bits
                     satoshis= SATOSHIDEN * jdouble(item,"value");
                 if ( satoshis == DPOW_UTXOSIZE && (address= jstr(item,"address")) != 0 && strcmp(address,coinaddr) == 0 )
                 {
+                    // blur UTXO mocking makes it here
                     if ( (str= jstr(item,"scriptPubKey")) != 0 && is_hexstr(str,0) == sizeof(script)*2 )
                     {
+                        // but not here
                         txid = jbits256(item,"txid");
                         vout = jint(item,"vout");
                         if ( bits256_nonz(txid) != 0 && vout >= 0 )
