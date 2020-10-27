@@ -690,13 +690,13 @@ char *dpow_signrawtransaction(struct supernet_info *myinfo,struct iguana_info *c
 {
     cJSON *array,*privkeys,*item,*retjson; char *wifstr,*str,*paramstr,*retstr; uint8_t script[256]; int32_t i,n,len,hashtype; struct vin_info V; struct iguana_waddress *waddr; struct iguana_waccount *wacct;
     if ( coin->active == 0 ) return (0);
+    printf("signrawtransaction.[%s].params %s\n",coin->symbol, paramstr);
     if ( coin->FULLNODE < 0 )
     {
         array = cJSON_CreateArray();
         jaddistr(array,rawtx);
         jaddi(array,jduplicate(vins));
         paramstr = jprint(array,1);
-        //printf("signrawtransaction\n");
         retstr = bitcoind_passthru(coin->symbol,coin->chain->serverport,coin->chain->userpass,coin->signtxstr,paramstr);
         if ( strcmp(coin->signtxstr,"signrawtransaction") == 0 && (retjson= cJSON_Parse(retstr)) != 0 )
         {
