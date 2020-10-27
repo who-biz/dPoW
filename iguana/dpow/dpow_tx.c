@@ -289,7 +289,7 @@ bits256 dpow_notarytx(struct supernet_info *myinfo,char *signedtx,int32_t *numsi
     // int32_t preimage_len; uint8_t preimage[32768]; // here we will create preimage, when usesigs=0 (?)
 
 	struct iguana_info *coin = (src_or_dest != 0) ? bp->destcoin : bp->srccoin;
-	//printf("[Decker] dpow_notarytx: src.(%s) dst.(%s) src_or_dest.(%d) usesigs.(%d)\n", bp->srccoin->symbol, bp->destcoin->symbol, src_or_dest, usesigs);
+	printf("[Decker] dpow_notarytx: src.(%s) dst.(%s) src_or_dest.(%d) usesigs.(%d)\n", bp->srccoin->symbol, bp->destcoin->symbol, src_or_dest, usesigs);
 
 	signedtx[0] = 0;
     *numsigsp = 0;
