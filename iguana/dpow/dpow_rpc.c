@@ -1050,6 +1050,7 @@ int32_t dpow_haveutxo(struct supernet_info *myinfo,struct iguana_info *coin,bits
                     // blur UTXO mocking makes it here
                     if ( (str= jstr(item,"scriptPubKey")) != 0 && is_hexstr(str,0) == sizeof(script)*2 )
                     {
+                        haveutxo++;
                         // but not here
                         txid = jbits256(item,"txid");
                         vout = jint(item,"vout");

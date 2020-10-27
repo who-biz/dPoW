@@ -584,7 +584,6 @@ char *iguana_utxoduplicates(struct supernet_info *myinfo,struct iguana_info *coi
     *completedp = 0;
     if ( signedtxidp != 0 )
         memset(signedtxidp,0,sizeof(*signedtxidp));
-    
 	if (strcmp(coin->chain->symbol, "HUSH") == 0)
 		bitcoin_address_ex(coin->chain->symbol, changeaddr, 0x1c, coin->chain->pubtype, myinfo->persistent_pubkey33, 33);
 	else
@@ -601,10 +600,10 @@ char *iguana_utxoduplicates(struct supernet_info *myinfo,struct iguana_info *coi
         spendlen = bitcoin_pubkeyspend(script,0,pubkey33);
         for (i=0; i<duplicates; i++)
             bitcoin_txoutput(txobj,script,spendlen,satoshis);
-		//printf("JSON: %s\n", cJSON_Print(txobj));
-		//printf("addresses: %s\n", cJSON_Print(addresses));
+		printf("JSON: %s\n", cJSON_Print(txobj));
+		printf("addresses: %s\n", cJSON_Print(addresses));
         rawtx = iguana_calcrawtx(myinfo,coin,&vins,txobj,satoshis * duplicates,changeaddr,txfee,addresses,0,0,0,0,"127.0.0.1",0,1);
-		//printf("JSON: %s\n", cJSON_Print(txobj));
+		printf("JSON: %s\n", cJSON_Print(txobj));
         if ( strcmp(coin->chain->symbol,"BTC") == 0 && cJSON_GetArraySize(vins) > duplicates/2 )
         {
             free(rawtx);
@@ -613,7 +612,7 @@ char *iguana_utxoduplicates(struct supernet_info *myinfo,struct iguana_info *coi
             free_json(vins);
             return(rawtx);
         }
-        //printf("%s splitfunds tx.(%s) vins.(%s)\n",coin->symbol,rawtx,jprint(vins,0));
+        printf("%s splitfunds tx.(%s) vins.(%s)\n",coin->symbol,rawtx,jprint(vins,0));
         if ( signedtxidp != 0 )
         {
             if ( (signedtx= iguana_signrawtx(myinfo,coin,0,signedtxidp,completedp,vins,rawtx,0,0)) != 0 )
