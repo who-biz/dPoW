@@ -244,7 +244,8 @@ void iguana_dPoWupdate(struct supernet_info *myinfo,struct dpow_info *dp)
         {
             if ( dp->lastheight == 0 )
                 dp->lastheight = height-1;
-            char str[65]; //printf("[%s].%d %s %s height.%d vs last.%d\n",dp->dest,dp->SRCHEIGHT,dp->symbol,bits256_str(str,blockhash),height,dp->lastheight);
+            char str[65];
+            printf("iguana_dPoWupdate: [%s].%d %s %s height.%d vs last.%d\n",dp->dest,dp->SRCHEIGHT,dp->symbol,bits256_str(str,blockhash),height,dp->lastheight);
             dp->SRCHEIGHT = height;
             if ( height < dp->last.blockhash.height )
             {
