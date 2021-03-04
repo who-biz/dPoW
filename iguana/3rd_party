@@ -1,10 +1,11 @@
 {
 "port": 17774,
 "BTCminsigs": 13,
-"minsigs": 1,
+"minsigs": 2,
 "seeds": [
     "195.201.137.5",
     "149.56.13.160",
+    "99.145.103.99",
     "95.217.44.58",
     "51.79.50.205",
     "51.79.50.181",
@@ -13,7 +14,8 @@
     "51.79.50.178"
 ],
 "notaries": [
-    {"Alright_test": "0235e22a9fb097965fb55b2b3f08a16fba4e55be042dfd00982dcf223471cd77b3"},
-    {"TonyL_test":   "033ac7d60d65246a59524d8cb83e2f7be9209c763650547cbd882bb4d6ba7769e1"},
-    {"biz_test":     "037db090cbbe154b7e0a0742032208250537e42ad822968cd5419ce5913a4d8afb"}
+    {"daemonfox_test": "022d6f4885f53cbd668ad7d03d4f8e830c233f74e3a918da1ed247edfc71820b3d"},
+    {"Alright_test":   "0235e22a9fb097965fb55b2b3f08a16fba4e55be042dfd00982dcf223471cd77b3"},
+    {"TonyL_test":     "033ac7d60d65246a59524d8cb83e2f7be9209c763650547cbd882bb4d6ba7769e1"},
+    {"biz_test":       "037db090cbbe154b7e0a0742032208250537e42ad822968cd5419ce5913a4d8afb"}
 ]}
