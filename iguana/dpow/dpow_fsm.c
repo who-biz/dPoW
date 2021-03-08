@@ -634,7 +634,7 @@ void dpow_statemachinestart(void *ptr)
         if ( bp->state != 0xffffffff )
         {
             dpow_send(myinfo,dp,bp,srchash,bp->hashmsg,0,bp->height,(void *)"ping",0);
-            printf(">>>>>>>> Prior to dpow_nanomsg_update(rpcsymbol = %s, myaddr = %s, bp->srccoin %s)", myinfo->rpcsymbol, myinfo->myaddr.BTC, bp->srccoin->symbol);
+            printf(">>>>>>>> Prior to dpow_nanomsg_update.rpcsymbol.(%s) myaddr(%s) bp->srccoin.(%s)\n", myinfo->rpcsymbol, myinfo->myaddr.BTC, bp->srccoin->symbol);
             dpow_nanomsg_update(myinfo);
         }
         else
