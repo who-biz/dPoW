@@ -151,6 +151,10 @@ int32_t dpow_checkutxo(struct supernet_info *myinfo,struct dpow_info *dp,struct 
                 printf("sendrawtransaction.(%s)\n",sendtx);
                 free(sendtx);
             }
+            else
+            {
+                printf("sendrawtransaction.(%s).rawtx.(%s)\n",sendtx,rawtx);
+            }
             free(rawtx);
         }
         free_json(addresses);
