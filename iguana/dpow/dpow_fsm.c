@@ -605,7 +605,7 @@ void dpow_statemachinestart(void *ptr)
         {
             if ( bp->isratify == 0 )
             {
-                //printf("abort %s ht.%d due to new checkpoint.%d\n",dp->symbol,checkpoint.blockhash.height,dp->checkpoint.blockhash.height);
+                printf("abort %s ht.%d due to new checkpoint.%d\n",dp->symbol,checkpoint.blockhash.height,dp->checkpoint.blockhash.height);
                 break;
             }
         }
@@ -627,6 +627,7 @@ void dpow_statemachinestart(void *ptr)
         if ( bp->state != 0xffffffff )
         {
             dpow_send(myinfo,dp,bp,srchash,bp->hashmsg,0,bp->height,(void *)"ping",0);
+            printf(">>>>>>>> Prior to dpow_nanomsg_update(rpcsymbol = %s, myaddr = %s, pubkey33 = %s)", myinfo->rpcsymbol, myinfo->myaddr.BTC, myinfo->persistent_pubkey33);
             dpow_nanomsg_update(myinfo);
         }
         else
