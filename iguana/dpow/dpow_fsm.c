@@ -141,6 +141,7 @@ int32_t dpow_checkutxo(struct supernet_info *myinfo,struct dpow_info *dp,struct 
     }
     if ( (haveutxo= dpow_haveutxo(myinfo,coin,txidp,voutp,coinaddr,srccoin)) <= minutxo && time(NULL) > dp->lastsplit+bp->duration && (bp->myind != 0 || dp->ratifying == 0) )
     {
+        printf(">>>>> haveutxo condition OK, haveutxo value: %d", haveutxo);
         addresses = cJSON_CreateArray();
         jaddistr(addresses,coinaddr);
         if ( myinfo->nosplit == 0 && (rawtx= iguana_utxoduplicates(myinfo,coin,dp->minerkey33,DPOW_UTXOSIZE,n,&completed,&signedtxid,0,addresses)) != 0 )
@@ -154,6 +155,8 @@ int32_t dpow_checkutxo(struct supernet_info *myinfo,struct dpow_info *dp,struct 
         }
         free_json(addresses);
         dp->lastsplit = (uint32_t)time(NULL);
+    } else {
+        printf(">>>>> haveutxo condition FAIL, haveutxo value: %d", haveutxo);
     }
     if ( bits256_nonz(*txidp) == 0 )
         return(-1);
@@ -627,7 +630,7 @@ void dpow_statemachinestart(void *ptr)
         if ( bp->state != 0xffffffff )
         {
             dpow_send(myinfo,dp,bp,srchash,bp->hashmsg,0,bp->height,(void *)"ping",0);
-            printf(">>>>>>>> Prior to dpow_nanomsg_update(rpcsymbol = %s, myaddr = %s, pubkey33 = %s)", myinfo->rpcsymbol, myinfo->myaddr.BTC, myinfo->persistent_pubkey33);
+            printf(">>>>>>>> Prior to dpow_nanomsg_update(rpcsymbol = %s, myaddr = %s)", myinfo->rpcsymbol, myinfo->myaddr.BTC);
             dpow_nanomsg_update(myinfo);
         }
         else
