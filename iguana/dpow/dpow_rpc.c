@@ -1072,7 +1072,7 @@ int32_t dpow_haveutxo(struct supernet_info *myinfo,struct iguana_info *coin,bits
         } //else printf("null utxo array size\n");
         free_json(unspents);
     } else printf("null return from dpow_listunspent\n");
-    if ( 0 && haveutxo > 0 )
+   // if ( 0 && haveutxo > 0 )
         printf("%s haveutxo.%d\n",coin->symbol,haveutxo);
     return(haveutxo);
 }

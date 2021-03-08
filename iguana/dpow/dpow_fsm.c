@@ -499,7 +499,7 @@ void dpow_statemachinestart(void *ptr)
         free(ptr);
         return;
     }
-    //printf(" myind.%d myaddr.(%s %s)\n",myind,srcaddr,destaddr);
+    printf(" myind.%d myaddr.(%s %s)\n",myind,srcaddr,destaddr);
     if ( myind == 0 && bits256_nonz(destprevtxid0) != 0 && bits256_nonz(srcprevtxid0) != 0 && destprevvout0 >= 0 && srcprevvout0 >= 0 )
     {
         ep->dest.prev_hash = destprevtxid0;
@@ -568,7 +568,7 @@ void dpow_statemachinestart(void *ptr)
     {
         if ( dp->checkpoint.blockhash.height > checkpoint.blockhash.height ) //(checkpoint.blockhash.height % 100) != 0 &&
         {
-            //printf("abort %s ht.%d due to new checkpoint.%d\n",dp->symbol,checkpoint.blockhash.height,dp->checkpoint.blockhash.height);
+            printf("abort %s ht.%d due to new checkpoint.%d\n",dp->symbol,checkpoint.blockhash.height,dp->checkpoint.blockhash.height);
             dp->ratifying -= bp->isratify;
             goto end;
         }
@@ -634,7 +634,7 @@ void dpow_statemachinestart(void *ptr)
         if ( bp->state != 0xffffffff )
         {
             dpow_send(myinfo,dp,bp,srchash,bp->hashmsg,0,bp->height,(void *)"ping",0);
-            printf(">>>>>>>> Prior to dpow_nanomsg_update(rpcsymbol = %s, myaddr = %s)", myinfo->rpcsymbol, myinfo->myaddr.BTC);
+            printf(">>>>>>>> Prior to dpow_nanomsg_update(rpcsymbol = %s, myaddr = %s, bp->srccoin %s)", myinfo->rpcsymbol, myinfo->myaddr.BTC, bp->srccoin->symbol);
             dpow_nanomsg_update(myinfo);
         }
         else
