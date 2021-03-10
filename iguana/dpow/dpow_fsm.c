@@ -640,7 +640,7 @@ void dpow_statemachinestart(void *ptr)
         else
         {
             dp->lastnotarized = checkpoint.blockhash.hash;
-            printf("notarized %s %s\n",dp->symbol,bits256_str(str,checkpoint.blockhash.hash));
+            printf("notarized %s %s, srccoin->symbol.(%s)\n",dp->symbol,bits256_str(str,checkpoint.blockhash.hash), bp->srccoin->symbol);
         }
         if ( 0 && dp->cancelratify != 0 && bp->isratify != 0 )
         {
